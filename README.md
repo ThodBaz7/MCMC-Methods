@@ -19,23 +19,24 @@ This project was implemented as part of the **MSc in Applied Statistics** at the
 | `part4_mh_normal_proposal_ess.R` | Metropolis‑Hastings with normal proposal; ESS and acceptance rate in plot title. |
 | `part5_gibbs_sampler.R` | Gibbs sampler for a bivariate exponential distribution. |
 | `part6_gibbs_nonexistent_mean.R` | Gibbs sampler; demonstration of non‑existence of E[X/Y]. |
-| `report.pdf` | Full assignment report (Greek, with results and figures). |
 
 ## 🗂️ Project Structure
 ```
-bootstrap-jackknife-methods/
+MCMC-Methods/
 │
-├── part1_bootstrap_correlation_partial.R    # Part 1: Bootstrap for correlation coefficients
-├── part2_jackknife_bootstrap_PCA_KL.R       # Part 2: Jackknife, Bootstrap PCA, KL divergence
+├── part1_metropolis_rejection_streaks.R    # Metropolis with normal proposal, run‑length analysis
+├── part2_metropolis_uniform_proposal.R               # Metropolis with uniform proposal
+├── part3_mh_log_transform.R                 # Metropolis‑Hastings with log transformation
+├── part4_mh_normal_proposal_ess.R               # Metropolis‑Hastings with normal proposal
+├── part5_gibbs_sampler.R                    # Gibbs sampler for bivariate exponential
+├── part6_gibbs_nonexistent_mean.R             # Gibbs sampler with demonstration of non‑finite mean
 │
-├── datasets/                                 # Dataset files
-│   ├── Games.txt
-│   └── BodyMeasurements.txt
+├── datasets/                                     # (No external datasets required; all distributions defined in code)
 │
-├── report/                                   # Folder containing the assignment report
-│   └── bootstrap_jackknife_methods.pdf       # Full report of the analysis (in Greek)
+├── report/                                       # Folder containing the assignment report
+│   └── MCMC-Methods.pdf               # Full report of the analysis 
 │
-└── README.md                                  # Project documentation
+└── README.md                                     # Project documentation
 ```
 
 ## 🚀 Installation & Execution
