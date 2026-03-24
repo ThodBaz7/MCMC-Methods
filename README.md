@@ -1,11 +1,11 @@
-# Statistical Analysis with Bootstrap and Jackknife Methods
+# Statistical Simulation with MCMC Methods
 
 [![R](https://img.shields.io/badge/R-4.0%2B-blue)](https://www.r-project.org/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-Resampling-green)](https://en.wikipedia.org/wiki/Bootstrapping_(statistics))
-[![Jackknife](https://img.shields.io/badge/Jackknife-Estimation-orange)](https://en.wikipedia.org/wiki/Jackknife_resampling)
+[![MCMC](https://img.shields.io/badge/MCMC-Metropolis--Hastings-green)](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm)
+[![Gibbs](https://img.shields.io/badge/Gibbs-Sampling-orange)](https://en.wikipedia.org/wiki/Gibbs_sampling)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 📋 Description
+## Description
 Implementation of **Markov Chain Monte Carlo (MCMC)** methods for simulating from various probability distributions. The project includes applications of the **Metropolis, Metropolis‑Hastings, and Gibbs algorithms**, with detailed analysis of acceptance rates, effective sample sizes, rejection streaks, and convergence diagnostics.
 
 This project was implemented as part of the **MSc in Applied Statistics** at the **University of Piraeus**.
@@ -20,7 +20,7 @@ This project was implemented as part of the **MSc in Applied Statistics** at the
 | `part5_gibbs_sampler.R` | Gibbs sampler for a bivariate exponential distribution. |
 | `part6_gibbs_nonexistent_mean.R` | Gibbs sampler; demonstration of non‑existence of E[X/Y]. |
 
-## 🗂️ Project Structure
+## Project Structure
 ```
 MCMC-Methods/
 │
@@ -39,94 +39,43 @@ MCMC-Methods/
 └── README.md                                     # Project documentation
 ```
 
-## 🚀 Installation & Execution
+## Installation & Execution
 
 ### Prerequisites
 - **R** (version 3.6 or higher)
-- No external R packages required (uses **base R functions only**)
+- The **coda** package is used for effective sample size calculation (can be installed via install.packages("coda")). All other code uses base R.
 
 ### Execution Steps
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ThodBaz7/bootstrap-jackknife-methods.git
-cd bootstrap-jackknife-methods
+git clone https://github.com/ThodBaz7/MCMC-Methods.git
+cd MCMC-Methods
 
-# 2. Run the analysis scripts in R
-# Open R or RStudio and run:
-source("part1_bootstrap_correlation_partial.R")
-source("part2_jackknife_bootstrap_PCA_KL.R")
+# 2. Run each exercise script in R (or RStudio)
+# For example:
+source("part1_metropolis_rejection_streaks.R")
+source("part2_metropolis_uniform_proposal.R")
+source("part3_mh_log_transform.R")
+source("part4_mh_normal_proposal_ess.R")
+source("part5_gibbs_sampler.R")
+source("part6_gibbs_nonexistent_mean.R")
 ```
 
-## 📈 Analysis Stages
-
-### 1️⃣ **Part 1: Correlation and Partial Correlation**
-- Simple correlation coefficient X,Y calculation
-- Partial correlation coefficient X,Y|Z (controlling for Z)
-- Bootstrap methods for 95% confidence intervals:
-  - Basic bootstrap
-  - Percentile bootstrap
-  - BCa bootstrap (bias-corrected and accelerated)
-  - Bootstrap-t
-- Comparison of all four methods for both correlation types
-
-### 2️⃣ **Part 2: Jackknife and Bootstrap for PCA**
-
-#### **A: Jackknife Estimation**
-- Calculation of **θ = λ₁ / Σλᵢ** (proportion of variance explained by first principal component)
-- Jackknife bias estimation
-- Jackknife standard error calculation
-- Comparison with original estimate
-
-#### **B: Bootstrap Confidence Intervals for θ**
-- 95% confidence intervals using all four bootstrap methods
-- Method comparison and interpretation
-
-#### **C: Hypothesis Testing for μ₁ = (7/17)μ₅**
-- Testing equality of means between first and fifth columns
-- Bootstrap simulation under H₀
-- P-value calculation and interpretation
-
-#### **D: Bootstrap for P(Z > 55)**
-- 98% confidence intervals for probability estimation
-- All four bootstrap methods applied to binary outcome
-- Probability estimation for body measurements > 55
-
-#### **E: Hypothesis Testing with KL Divergence Bootstrap**
-- Classic t-test for H₀: μ₁ = 52
-- Standard bootstrap test
-- KL divergence bootstrap:
-  - Optimal probability weights under H₀
-  - Kullback-Leibler divergence minimization
-  - Bootstrap sampling with optimal probabilities
-- Comparison of all three methods
-
-## 📦 R Code Features
-All scripts use **base R only** - no external packages required.
+## R Code Features
+All scripts are self‑contained and rely primarily on base R; only coda is used for ESS calculation.
 
 ### Key Functions:
-- `my.cor_xy()` - Simple correlation calculation
-- `my.partial_cor()` - Partial correlation calculation
-- `calculate_theta()` - PCA variance proportion
-- `jknife()` - Jackknife estimation function
-- `p()` - KL divergence probability weights
+- `pi_tilde()` - unnormalized target densities
+- `rle()` - base R function for run‑length encoding (used in part1)
+- `integrate()` - numerical integration for normalizing constants
+- `cumsum()` and `var()` - for cumulative estimates
+- `mcmc()` and `effectiveSize()` - from coda package
 
-## 📝 Results Summary
+## Report
+The full assignment report is available at [`report/MCMC-Methods.pdf`](report/MCMC-Methods.pdf)
 
-### **Part 1 Results:**
-- **Simple correlation X,Y:** Nearly perfect positive correlation (all CIs near 1)
-- **Partial correlation X,Y|Z:** All CIs contain 0 → spurious correlation explained by Z
-
-### **Part 2 Results:**
-- **θ estimate:** ~0.875 (first PC explains 87.5% of variance)
-- **Jackknife bias:** Negligible (-0.0001)
-- **Jackknife standard error:** 0.017
-- **KL Bootstrap p-value:** ~0.04
-
-## 📄 Report
-The full assignment report is available at [`report/bootstrap_jackknife_methods.pdf`](report/bootstrap_jackknife_methods.pdf)
-
-## 📜 License
+## License
 MIT License - Free use and modification with attribution.
 
-## 📬 Contact
+## Contact
 thbazhba@gmail.com
