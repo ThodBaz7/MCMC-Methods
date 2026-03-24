@@ -10,13 +10,16 @@ Implementation of **Markov Chain Monte Carlo (MCMC)** methods for simulating fro
 
 This project was implemented as part of the **MSc in Applied Statistics** at the **University of Piraeus**.
 
-## 📊 Distributions Studied
-- **Part 1:** Univariate distribution with density π(x)∝(e^(〖-x〗^2 )  sin⁡(x^2 ))/(1+x^2 ),x∈R
-- **Part 2:** Univariate distribution with density π(x)∝〖sin〗^4 (x+3) 〖cos〗^2 (x-4)exp(-(x-1)^2/2),x∈R
-- **Part 3:** Positive‑valued distribution π(x)∝x^2/(2+3x) e^(-5x),x>0
-- **Part 4:** Univariate distribution with polynomial exponent π(x)∝exp⁡{-0.5[(x/10)^4+(x/10)^2+x^2 ]},x∈R
-- **Part 5:** Bivariate distribution π(x,y)∝e^(-5x(1+y)-y(3+2x) ),x,y>0
-- **Part 6:** Bivariate distribution with Normal and Gamma conditionals π(x,y)∝√y×exp{-y/2 [1+(x-π)^2 ]},x ∈ R,y > 0
+## Contents
+| File | Description |
+|------|-------------|
+| `part1_metropolis_rejection_streaks.R` | Metropolis with normal proposal; analysis of rejection run‑lengths. |
+| `part2_metropolis_uniform_proposal.R` | Metropolis with uniform proposal U(-3.1, 3.1); convergence of mean and variance. |
+| `part3_mh_log_transform.R` | Metropolis‑Hastings with log transformation (positive support). |
+| `part4_mh_normal_proposal_ess.R` | Metropolis‑Hastings with normal proposal; ESS and acceptance rate in plot title. |
+| `part5_gibbs_sampler.R` | Gibbs sampler for a bivariate exponential distribution. |
+| `part6_gibbs_nonexistent_mean.R` | Gibbs sampler; demonstration of non‑existence of E[X/Y]. |
+| `report.pdf` | Full assignment report (Greek, with results and figures). |
 
 ## 🗂️ Project Structure
 ```
